@@ -37,11 +37,14 @@ jobs:
           python -c "import sys, json; print(json.load(sys.stdin)['body'])" | \
           grep "^changelog: " | \
           sed "s/changelog: //g")
+        echo "$output"
+        echo "$output" | grep -i "^\s*none\.*$"
         if [[ -z "$output" ]]; then
           echo "ERROR: PR body must contain 'changelog: ...'"
           exit 1
-        elif [[ "$output" = "none" ]]; then
-          echo "WARNING: changelog is 'none'"
+        elif [[ -n $(echo "$output" | grep -i "^\s*none\.*$") ]]; then
+          echo "ERROR: changelog is 'none', use 'internal' for internal only changes"
+          exit 1
         fi
       env:
         PYTHONIOENCODING: 'utf-8'

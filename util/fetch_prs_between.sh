@@ -15,7 +15,7 @@ for pr in $(git log --oneline --grep "Merge #" --grep "Merge pull request" --gre
   id=$(echo "$pr" | rg -o '#[0-9]{3,5}' | cut -c 2-)
   commit=$(echo "$pr" | cut -d' ' -f 1)
   message=$(git --no-pager show --pretty=medium "$commit")
-  if [[ -n $(echo "$message" | rg "^[\s]{4}changelog: [nN]one\.*$") ]]; then
+  if [[ -n $(echo "$message" | rg -i "^[\s]{4}changelog: internal\.*$") ]]; then
     continue
   fi
 
