@@ -1,8 +1,8 @@
 Thank you for making Clippy better!
 
 We're collecting our changelog from pull request descriptions.
-If your PR only updates to the latest nightly, you can leave the
-`changelog` entry as `none`. Otherwise, please write a short comment
+If your PR only includes internal changes, you can just change the
+`changelog` entry to `internal`. Otherwise, please write a short comment
 explaining your change.
 
 If your PR fixes an issue, you can add "fixes #issue_number" into this
@@ -28,5 +28,5 @@ Delete this line and everything above before opening your PR.
 
 ---
 
-*Please keep the line below*
+*Please adapt the line below (Use "internal" for internal only changes)*
 changelog: none
