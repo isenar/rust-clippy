@@ -37,6 +37,8 @@ jobs:
           python -c "import sys, json; print(json.load(sys.stdin)['body'])" | \
           grep "^changelog: " | \
           sed "s/changelog: //g")
+        echo "$output"
+        echo "$output" | grep -i "^\s*none\.*$"
         if [[ -z "$output" ]]; then
           echo "ERROR: PR body must contain 'changelog: ...'"
           exit 1
